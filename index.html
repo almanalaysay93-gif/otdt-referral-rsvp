@@ -106,7 +106,12 @@
   }
   .meta-chip .k{color:var(--gold-400);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:2px;}
 
-  .hero-cta{margin-top:46px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;opacity:0;animation:rise 0.9s ease forwards 0.95s;}
+  .countdown{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:rise 0.9s ease forwards 0.85s;}
+  .cd-item{display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(250,246,238,0.06);border:1px solid rgba(212,162,76,0.25);backdrop-filter:blur(6px);border-radius:12px;padding:14px 20px;min-width:74px;}
+  .cd-item .cd-num{font-family:'Newsreader',serif;font-size:1.9rem;font-weight:500;color:var(--gold-400);line-height:1;font-variant-numeric:tabular-nums;}
+  .cd-item .cd-label{font-size:0.64rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(250,246,238,0.55);margin-top:6px;}
+
+  .hero-cta{margin-top:46px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;opacity:0;animation:rise 0.9s ease forwards 1.05s;}
   .btn-gold{
     background:var(--gold-500);color:var(--navy-950);
     padding:16px 34px;border-radius:999px;text-decoration:none;
@@ -269,6 +274,13 @@
         <div class="meta-chip"><span><span class="k">Audience</span>Licensed healthcare professionals</span></div>
       </div>
 
+      <div class="countdown" id="countdown" aria-label="Countdown to conference">
+        <div class="cd-item"><span class="cd-num" id="cd-days">00</span><span class="cd-label">Days</span></div>
+        <div class="cd-item"><span class="cd-num" id="cd-hours">00</span><span class="cd-label">Hours</span></div>
+        <div class="cd-item"><span class="cd-num" id="cd-mins">00</span><span class="cd-label">Mins</span></div>
+        <div class="cd-item"><span class="cd-num" id="cd-secs">00</span><span class="cd-label">Secs</span></div>
+      </div>
+
       <div class="hero-cta">
         <a class="btn-gold" href="#register">
           Reserve your seat
@@ -411,6 +423,31 @@
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   },{threshold:0.15});
   revealEls.forEach(el=>io.observe(el));
+
+  // Countdown to conference — Aug 27, 2026, 8:00 AM Asia/Manila
+  const eventTime = new Date('2026-08-27T08:00:00+08:00').getTime();
+  const cdEls = {
+    d: document.getElementById('cd-days'),
+    h: document.getElementById('cd-hours'),
+    m: document.getElementById('cd-mins'),
+    s: document.getElementById('cd-secs')
+  };
+  const countdownEl = document.getElementById('countdown');
+  let cdTimer;
+  function tickCountdown(){
+    const diff = eventTime - Date.now();
+    if(diff <= 0){
+      countdownEl.innerHTML = '<div class="cd-item" style="min-width:auto;padding:14px 24px;"><span class="cd-num" style="font-size:1.15rem;">Event day is here</span></div>';
+      clearInterval(cdTimer);
+      return;
+    }
+    cdEls.d.textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
+    cdEls.h.textContent = String(Math.floor(diff%86400000/3600000)).padStart(2,'0');
+    cdEls.m.textContent = String(Math.floor(diff%3600000/60000)).padStart(2,'0');
+    cdEls.s.textContent = String(Math.floor(diff%60000/1000)).padStart(2,'0');
+  }
+  tickCountdown();
+  cdTimer = setInterval(tickCountdown, 1000);
 </script>
 <script src="script.js?v=2"></script>
 
