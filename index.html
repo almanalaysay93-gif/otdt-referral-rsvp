@@ -45,9 +45,13 @@
       linear-gradient(180deg,var(--navy-950) 0%, var(--navy-900) 55%, var(--navy-800) 100%);
     color:var(--paper-50);
     min-height:100vh;
+    overflow:hidden;
+  }
+  .hero .flow-art-container{
     display:flex;
     flex-direction:column;
-    overflow:hidden;
+    min-height:100vh;
+    width:100%;
   }
   .hero-net{position:absolute;inset:0;width:100%;height:100%;opacity:0.55;}
   .hero-net line{stroke:var(--gold-500);stroke-width:1;opacity:0;animation:drawline 2.4s ease forwards;}
@@ -132,6 +136,16 @@
   /* ---------- SECTION SHARED ---------- */
   section{position:relative;}
   .section-pad{padding:110px 0;}
+
+  /* ---------- FLOW SCROLL (pin + rotate transition) ---------- */
+  [data-flow-section]{position:relative;overflow:hidden;}
+  [data-flow-section] .flow-art-container{will-change:transform;}
+  section[data-flow-section] .flow-art-container{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+  }
+  section[data-flow-section] .flow-art-container > .wrap{width:100%;}
   .tag{font-size:0.76rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--navy-700);font-weight:600;display:flex;align-items:center;gap:10px;margin-bottom:20px;}
   .tag::before{content:'';width:26px;height:1px;background:var(--navy-700);}
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1);}
@@ -160,6 +174,15 @@
   .detail-card h3{font-size:1.15rem;font-weight:500;margin-bottom:10px;color:var(--paper-50);}
   .detail-card p{font-size:0.92rem;color:rgba(250,246,238,0.62);}
   .detail-card a{color:var(--gold-400);text-decoration:none;border-bottom:1px solid rgba(212,162,76,0.4);}
+
+  /* ---------- PROGRAM ---------- */
+  .program{background:var(--paper-50);}
+  .program-list{margin-top:44px;border-top:1px solid var(--line);}
+  .program-row{display:grid;grid-template-columns:190px 1fr 280px;gap:24px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--line);}
+  .program-row .time{font-family:'Newsreader',serif;font-size:1rem;color:var(--gold-500);font-weight:500;white-space:nowrap;}
+  .program-row .activity{color:var(--navy-900);font-weight:600;font-size:0.98rem;line-height:1.45;}
+  .program-row .responsible{color:var(--ink-600);font-size:0.88rem;line-height:1.4;}
+  .program-row .responsible:empty::before{content:'—';opacity:0.35;}
 
   /* ---------- AUDIENCE ---------- */
   .audience{background:var(--paper-100);}
@@ -225,6 +248,7 @@
     .aud-grid{grid-template-columns:1fr 1fr;}
     .rsvp-form{grid-template-columns:1fr;padding:30px 22px 20px;}
     .foot-grid{flex-direction:column;align-items:flex-start;}
+    .program-row{grid-template-columns:1fr;gap:6px;padding:18px 0;}
   }
   @media (max-width:520px){
     .aud-grid{grid-template-columns:1fr;}
@@ -235,7 +259,8 @@
 </head>
 <body>
 
-<header class="hero">
+<header class="hero" data-flow-section>
+ <div class="flow-art-container">
   <svg class="hero-net" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
     <line x1="120" y1="120" x2="380" y2="260" style="animation-delay:.3s"/>
     <line x1="380" y1="260" x2="640" y2="150" style="animation-delay:.5s"/>
@@ -292,9 +317,11 @@
   </div>
 
   <div class="scroll-cue"><span>Details</span><span class="line"></span></div>
+ </div>
 </header>
 
-<section class="about section-pad">
+<section class="about section-pad" data-flow-section>
+ <div class="flow-art-container">
   <div class="wrap about-grid">
     <div class="reveal">
       <div class="tag">Why this matters</div>
@@ -308,9 +335,11 @@
       <div class="stat"><div class="num">08.27</div><div class="label">2026 — mark the date</div></div>
     </div>
   </div>
+ </div>
 </section>
 
-<section class="details section-pad" id="details">
+<section class="details section-pad" id="details" data-flow-section>
+ <div class="flow-art-container">
   <div class="wrap">
     <div class="tag reveal">The essentials</div>
     <h2 class="reveal">Everything you need to know <em>before you RSVP.</em></h2>
@@ -332,9 +361,36 @@
       </div>
     </div>
   </div>
+ </div>
 </section>
 
-<section class="audience section-pad">
+<section class="program section-pad" id="program">
+  <div class="wrap">
+    <div class="tag reveal">Full-day schedule</div>
+    <h2 class="reveal">Program of <em>Activities.</em></h2>
+    <div class="program-list">
+      <div class="program-row"><span class="time">7:00 – 8:00 am</span><span class="activity">Registration</span><span class="responsible"></span></div>
+      <div class="program-row"><span class="time">8:00 – 8:10 am</span><span class="activity">Prayer and National Anthem</span><span class="responsible"></span></div>
+      <div class="program-row"><span class="time">8:10 – 8:35 am</span><span class="activity">Opening Remarks</span><span class="responsible"></span></div>
+      <div class="program-row"><span class="time">8:35 – 9:00 am</span><span class="activity">Keynote Address</span><span class="responsible">Dr. Ronaldo Quintana</span></div>
+      <div class="program-row"><span class="time">9:00 – 9:40 am</span><span class="activity">Strengthening the Philippine Deceased Organ Donation System</span><span class="responsible">Transplant Coordinator, Philnos</span></div>
+      <div class="program-row"><span class="time">9:40 – 10:20 am</span><span class="activity">From Transplantation to Long-Term Success: The Role of PhilHealth in Kidney Transplant Care — Z Package</span><span class="responsible">Atty. Harvey L. Carcedo, MBA — PHIC Regional Office XI</span></div>
+      <div class="program-row"><span class="time">10:20 – 11:00 am</span><span class="activity">Revisiting Administrative Order 2010-0019</span><span class="responsible">Philnos Transplant Coordinator</span></div>
+      <div class="program-row"><span class="time">11:00 – 11:30 am</span><span class="activity">Launching of the City Ordinance</span><span class="responsible"></span></div>
+      <div class="program-row"><span class="time">11:30 am – 12:00 nn</span><span class="activity">Creation of OTDU</span><span class="responsible"></span></div>
+      <div class="program-row"><span class="time">12:00 nn – 12:30 pm</span><span class="activity">Enhanced Organ Viability through Continuous Perfusion</span><span class="responsible">Dr. Adolfo Parayno</span></div>
+      <div class="program-row"><span class="time">12:30 – 1:30 pm</span><span class="activity">Live Demonstration of Lifeport</span><span class="responsible">Mr. Christopher Laycock, Managing Director, Global Distribution</span></div>
+      <div class="program-row"><span class="time">1:30 – 2:10 pm</span><span class="activity">Organ Retrieval Surgery: Maximizing the Gift of Life Through Excellence in Procurement</span><span class="responsible">Dr. Jose Emmanuel Del Fierro</span></div>
+      <div class="program-row"><span class="time">2:10 – 3:00 pm</span><span class="activity">Transplant Immunology</span><span class="responsible">Dr. Jeanette A. Borgonia</span></div>
+      <div class="program-row"><span class="time">3:00 – 3:45 pm</span><span class="activity">Time-Critical Collaboration: NKTI Immunology Laboratory and OPO Coordination in Deceased Organ Donation</span><span class="responsible">Ms. Josephine Simangan</span></div>
+      <div class="program-row"><span class="time">3:45 – 4:30 pm</span><span class="activity">Breaking Barriers in Highly Sensitized Transplant Candidate</span><span class="responsible">Dr. Lynn Mae Dedase-Serame and Dr. Aileen Herceda</span></div>
+      <div class="program-row"><span class="time">4:30 – 5:30 pm</span><span class="activity">Optimizing Long-Term Graft Survival</span><span class="responsible">Dr. Fritz Diekmann</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="audience section-pad" data-flow-section>
+ <div class="flow-art-container">
   <div class="wrap">
     <div class="tag reveal">Built for the referral chain</div>
     <h2 class="serif reveal" style="font-size:clamp(1.9rem,3vw,2.6rem);font-weight:500;color:var(--navy-900);max-width:680px;">This RSVP is for everyone who touches a referral.</h2>
@@ -345,9 +401,11 @@
       <div class="aud-card"><span class="n">04</span><h4>Institutional Partners</h4><p>Hospital administrators shaping referral policy network-wide.</p></div>
     </div>
   </div>
+ </div>
 </section>
 
-<section class="register section-pad" id="register">
+<section class="register section-pad" id="register" data-flow-section>
+ <div class="flow-art-container">
   <div class="wrap">
     <div class="register-head reveal">
       <div class="tag">Registration</div>
@@ -407,6 +465,7 @@
     </div>
     <p class="form-fallback">Trouble submitting? Email <a href="mailto:almanalaysay93@gmail.com">almanalaysay93@gmail.com</a> and we'll register you directly.</p>
   </div>
+ </div>
 </section>
 
 <footer>
@@ -417,6 +476,8 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script>
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries)=>{
@@ -448,6 +509,51 @@
   }
   tickCountdown();
   cdTimer = setInterval(tickCountdown, 1000);
+
+  // Flow scroll — each major section pins full-screen and rotates the next
+  // one in as you scroll, like flipping through oversized cards.
+  (function initFlowScroll(){
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const sections = Array.from(document.querySelectorAll('[data-flow-section]'));
+    if (sections.length === 0) return;
+
+    sections.forEach((section, i) => {
+      gsap.set(section, { zIndex: i + 1 });
+
+      const inner = section.querySelector('.flow-art-container');
+      if (!inner) return;
+
+      if (i > 0) {
+        gsap.set(inner, { rotation: 30, transformOrigin: 'bottom left' });
+        gsap.to(inner, {
+          rotation: 0,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top bottom',
+            end: 'top 25%',
+            scrub: true
+          }
+        });
+      }
+
+      if (i < sections.length - 1) {
+        ScrollTrigger.create({
+          trigger: section,
+          start: 'bottom bottom',
+          end: 'bottom top',
+          pin: true,
+          pinSpacing: false
+        });
+      }
+    });
+
+    ScrollTrigger.refresh();
+  })();
 </script>
 <script src="script.js?v=2"></script>
 
