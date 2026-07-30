@@ -515,6 +515,10 @@
   (function initFlowScroll(){
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    // Section content (esp. the register form and detail cards) can run
+    // taller than one screen on phones; pinning would clip it. Keep the
+    // pin/rotate flourish for wider viewports only, plain scroll on mobile.
+    if (!window.matchMedia('(min-width: 861px)').matches) return;
 
     gsap.registerPlugin(ScrollTrigger);
 
