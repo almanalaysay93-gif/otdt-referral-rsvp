@@ -181,8 +181,9 @@
   .program-row{display:grid;grid-template-columns:190px 1fr 280px;gap:24px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--line);}
   .program-row .time{font-family:'Newsreader',serif;font-size:1rem;color:var(--gold-500);font-weight:500;white-space:nowrap;}
   .program-row .activity{color:var(--navy-900);font-weight:600;font-size:0.98rem;line-height:1.45;}
-  .program-row .responsible{color:var(--ink-600);font-size:0.88rem;line-height:1.4;}
-  .program-row .responsible:empty::before{content:'—';opacity:0.35;}
+  .program-row .responsible{color:var(--navy-900);font-size:0.88rem;line-height:1.4;font-weight:600;}
+  .program-row .responsible:empty::before{content:'—';opacity:0.35;font-weight:400;}
+  .program-row .role{display:block;margin-top:3px;color:var(--ink-600);font-weight:400;font-size:0.82rem;line-height:1.35;}
 
   /* ---------- AUDIENCE ---------- */
   .audience{background:var(--paper-100);}
@@ -371,19 +372,19 @@
     <div class="program-list">
       <div class="program-row"><span class="time">7:00 – 8:00 am</span><span class="activity">Registration</span><span class="responsible"></span></div>
       <div class="program-row"><span class="time">8:00 – 8:10 am</span><span class="activity">Prayer and National Anthem</span><span class="responsible"></span></div>
-      <div class="program-row"><span class="time">8:10 – 8:20 am</span><span class="activity">Welcome Address</span><span class="responsible">Dr. Ellenietta Herundina Maria Victoria Nuñez Gamolo, MD, MPH, CESO IV</span></div>
-      <div class="program-row"><span class="time">8:20 – 8:35 am</span><span class="activity">Opening Remarks</span><span class="responsible">Dr. Ricardo B. Audan, MD, FPAFP, FPSMSG, DPA, CHA</span></div>
-      <div class="program-row"><span class="time">8:35 – 9:00 am</span><span class="activity">Keynote Address</span><span class="responsible">Dr. Ronaldo Quintana</span></div>
-      <div class="program-row"><span class="time">9:00 – 9:40 am</span><span class="activity">Strengthening the Philippine Deceased Organ Donation System</span><span class="responsible">Transplant Coordinator, Philnos</span></div>
-      <div class="program-row"><span class="time">9:40 – 10:30 am</span><span class="activity">From Transplantation to Long-Term Success: The Role of PhilHealth in Kidney Transplant Care — Z Package</span><span class="responsible">Atty. Harvey L. Carcedo, MBA — PHIC Regional Office XI</span></div>
-      <div class="program-row"><span class="time">10:30 – 11:30 am</span><span class="activity">Revisiting Administrative Order 2010-0019 and Creation of ODTU</span><span class="responsible">Philnos Transplant Coordinator</span></div>
-      <div class="program-row"><span class="time">11:30 am – 12:30 pm</span><span class="activity">Enhanced Organ Viability through Continuous Perfusion</span><span class="responsible">Dr. Adolfo Parayno</span></div>
-      <div class="program-row"><span class="time">12:30 – 1:30 pm</span><span class="activity">Live Demonstration of Lifeport</span><span class="responsible">Mr. Christopher Laycock, Managing Director, Global Distribution</span></div>
+      <div class="program-row"><span class="time">8:10 – 8:20 am</span><span class="activity">Welcome Address</span><span class="responsible">Dr. Ellenietta Herundina Maria Victoria Nuñez Gamolo, MPH, CESO IV<span class="role">Regional Director, Department of Health (DOH) Davao Center for Health Development (CHD XI)</span></span></div>
+      <div class="program-row"><span class="time">8:20 – 8:35 am</span><span class="activity">Opening Remarks</span><span class="responsible">Dr. Ricardo B. Audan, FPAFP, FPSMSG, DPA, CHA<span class="role">Medical Center Chief II, Southern Philippines Medical Center (SPMC)</span></span></div>
+      <div class="program-row"><span class="time">8:35 – 9:00 am</span><span class="activity">Keynote Address</span><span class="responsible">Dr. Ronaldo R. Quintana, MD, MPH, CFP, FPSVI<span class="role">Program Manager, Philippine Network for Organ Sharing (PhilNOS), Department of Health</span></span></div>
+      <div class="program-row"><span class="time">9:00 – 9:40 am</span><span class="activity">Strengthening the Philippine Deceased Organ Donation System</span><span class="responsible">Transplant Coordinator, PhilNOS</span></div>
+      <div class="program-row"><span class="time">9:40 – 10:30 am</span><span class="activity">From Transplantation to Long-Term Success: The Role of PhilHealth in Kidney Transplant Care — Z Package</span><span class="responsible">Atty. Harvey L. Carcedo, MBA<span class="role">Regional Vice President, PhilHealth Regional Office XI (PHIC XI)</span></span></div>
+      <div class="program-row"><span class="time">10:30 – 11:30 am</span><span class="activity">Revisiting Administrative Order 2010-0019 and Creation of ODTU</span><span class="responsible">PhilNOS Transplant Coordinator</span></div>
+      <div class="program-row"><span class="time">11:30 am – 12:30 pm</span><span class="activity">Enhanced Organ Viability through Continuous Perfusion</span><span class="responsible">Dr. Adolfo C. Parayno<span class="role">Chairperson, Division of Organ Transplantation and Vascular Surgery, National Kidney and Transplant Institute (NKTI)</span></span></div>
+      <div class="program-row"><span class="time">12:30 – 1:30 pm</span><span class="activity">Live Demonstration of Lifeport</span><span class="responsible">Mr. Christopher Laycock<span class="role">Managing Director, Global Distribution</span></span></div>
       <div class="program-row"><span class="time">1:30 – 2:30 pm</span><span class="activity">Launching of the City Ordinance</span><span class="responsible"></span></div>
-      <div class="program-row"><span class="time">2:30 – 3:00 pm</span><span class="activity">Intraoperative Management of Transplantation</span><span class="responsible">Dr. Louie Metran</span></div>
-      <div class="program-row"><span class="time">3:00 – 3:45 pm</span><span class="activity">Transplant Immunology</span><span class="responsible">Dr. Maria Theresa Bad-ang</span></div>
-      <div class="program-row"><span class="time">3:45 – 4:30 pm</span><span class="activity">Breaking Barriers in Highly Sensitized Transplant Candidate: Lab Perspective</span><span class="responsible">Dr. Lynn Mae Dedase-Serame</span></div>
-      <div class="program-row"><span class="time">4:30 – 5:30 pm</span><span class="activity">Optimizing Long-Term Graft Survival</span><span class="responsible">Dr. Fritz Diekmann</span></div>
+      <div class="program-row"><span class="time">2:30 – 3:00 pm</span><span class="activity">Intraoperative Management of Transplantation</span><span class="responsible">Dr. Louie A. Metran, MD, DPBS, FPSTS<span class="role">Chairman, Organ Transplant Services Unit (OTSU), Southern Philippines Medical Center (SPMC)</span></span></div>
+      <div class="program-row"><span class="time">3:00 – 3:45 pm</span><span class="activity">Transplant Immunology</span><span class="responsible">Dr. Maria Theresa Bad-ang, MD, FPCP, FPSN, FISN<span class="role">Head, Organ Procurement Organization Zone 4A (SHARE) and Head, SPMC Kidney and Transplant Institute</span></span></div>
+      <div class="program-row"><span class="time">3:45 – 4:30 pm</span><span class="activity">Breaking Barriers in Highly Sensitized Transplant Candidate: Lab Perspective</span><span class="responsible">Dr. Lynn Mae C. Dedase-Serame, RMT, FPCP, DPSAAI<span class="role">Transplant Immunologist</span></span></div>
+      <div class="program-row"><span class="time">4:30 – 5:30 pm</span><span class="activity">Optimizing Long-Term Graft Survival</span><span class="responsible">Dr. Fritz Kurt Herbert Diekmann, PhD<span class="role">Mentoring Center (MC) Liaison Officer, ISN-TTS Sister Transplant Centers (STC) Program</span></span></div>
     </div>
   </div>
 </section>
